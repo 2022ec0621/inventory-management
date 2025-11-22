@@ -1,70 +1,228 @@
-# Getting Started with Create React App
+# 📦 Inventory Management System (Full Stack)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application to manage products with authentication, role-based access, pagination, sorting, CSV import/export, and responsive UI.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Live Project Links
 
-### `npm start`
+### Frontend (Netlify)
+🔗 https://6921a267070cd50008fb42dd--inventory-frontend-1.netlify.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend (Render)
+🔗 https://inventory-backend-24p8.onrender.com/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend
+- React.js (Create React App)
+- CSS (Flexbox + Media Queries)
+- Axios
+- JWT stored in Local Storage
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Backend
+- Node.js
+- Express.js
+- SQLite3
+- JWT (JSON Web Tokens)
+- bcrypt (password hashing)
 
 ### Deployment
+- Frontend → Netlify
+- Backend → Render
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🔑 Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### ✅ Authentication
+- Login and Register
+- Password hashing using **bcrypt**
+- JWT-based authentication
+- Role-based access control
+
+### ✅ Roles
+| Role  | Permissions |
+|--------|------------|
+| Admin  | View, Add, Edit, Delete, Import CSV, Export CSV |
+| Client | View only |
+
+---
+
+## 📋 Default Users
+
+Use these demo accounts:
+
+Admin:
+Username: admin
+Password: admin123
+
+Client:
+Username: client
+Password: client123
+
+
+---
+
+## 📦 Product Management
+
+You can:
+
+- Add products
+- Edit products
+- Delete products (admin only)
+- View stock history
+- Import products using CSV
+- Export products as CSV
+
+---
+
+## 📊 Pagination & Sorting
+
+### Frontend
+- Click column headers to **sort**
+- Supports page size selection
+- Prev/Next page navigation
+
+### Backend
+Supports:
+/api/products?page=1&limit=10&sort=name&order=asc
+
+
+---
+
+## 📥 CSV Import Format
+
+Use this format for importing products:
+
+```csv
+name,unit,category,brand,stock
+Pen,pcs,Stationary,Cello,100
+Notebook,pcs,Stationary,Classmate,50
+Phone,unit,Electronics,Samsung,30
+
+🎨 UI Features
+
+Modern button colors (Import, Export, Add, Edit, Delete)
+
+Stock status badges:
+
+🟢 Green → In Stock
+
+🔴 Red → Out of Stock
+
+Responsive Design
+
+Desktop optimized table view
+
+Mobile-friendly card/table hybrid layout
+
+Media queries for:
+
+Mobile
+
+Tablet
+
+Desktop
+
+
+inventory-management/
+│
+├── Backend/
+│   ├── middleware/
+│   │   └── auth.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── products.js
+│   ├── db.js
+│   ├── server.js
+│   └── package.json
+│
+├── Frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Login.js
+│   │   │   ├── ProductTable.js
+│   │   │   └── HistorySidebar.js
+│   │   ├── api.js
+│   │   ├── App.js
+│   │   ├── App.css
+│   │   └── index.js
+│   └── package.json
+│
+└── .gitignore
+
+
+⚙️ Local Setup
+Clone the Repo
+
+git clone https://github.com/2022ec0621/inventory-management.git
+cd inventory-management
+
+Run Backend
+cd Backend
+npm install
+npm start
+
+Runs at:
+http://localhost:5000
+
+Run Frontend
+cd Frontend
+npm install
+npm start
+
+
+🌐 Environment Variables
+Backend (Render)
+
+Set in Render Dashboard:
+
+
+JWT_SECRET=your-secret-key
+
+Frontend (Netlify)
+
+Set in Netlify:
+REACT_APP_API_BASE_URL=https://inventory-backend-24p8.onrender.com
+DISABLE_ESLINT_PLUGIN=true
+
+
+🚀 Deployment Summary
+Backend (Render)
+
+Root directory: Backend
+
+Build command: npm install
+
+Start command: npm start
+
+Frontend (Netlify)
+
+Base directory: Frontend
+
+Build command: npm run build
+
+Publish directory: build
+
+✅ Assignment Requirements Covered
+| Requirement          | Status |
+| -------------------- | ------ |
+| User Authentication  | ✅ Done |
+| JWT Security         | ✅ Done |
+| Role Based Access    | ✅ Done |
+| CRUD Operations      | ✅ Done |
+| Pagination & Sorting | ✅ Done |
+| CSV Import/Export    | ✅ Done |
+| Responsive UI        | ✅ Done |
+| Deployment           | ✅ Done |
+
+
+👨‍💻 Developer
+
+Name: Karthik
+Project: Full Stack Inventory Management System
+Year: 2024 – 2025
