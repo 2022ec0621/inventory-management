@@ -1,0 +1,287 @@
+/* ========== GLOBAL RESET ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ========== MAIN APP LAYOUT (Inventory Page) ========== */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.app-main {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  width: 100%;
+  max-width: 1150px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.app-main h1 {
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+/* ========== TOOLBAR ========== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.toolbar input,
+.toolbar select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.toolbar input:focus,
+.toolbar select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* ========== TABLE ========== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.product-table th {
+  background-color: #f3f4f6;
+  font-weight: bold;
+}
+
+/* ========== BUTTONS ========== */
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Button colors */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+/* Disabled buttons */
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ========== ICON BUTTONS (Mobile only text removal) ========== */
+.btn-icon {
+  margin-right: 4px;
+}
+
+@media (max-width: 600px) {
+  .btn-text {
+    display: none;
+  }
+
+  .btn-icon {
+    margin-right: 0;
+  }
+}
+
+/* ========== PAGINATION ========== */
+.pagination-bar {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.pagination-bar select {
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ========== LOGIN / REGISTER PAGE ========== */
+.auth-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  padding: 16px;
+}
+
+.auth-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.18), transparent 50%),
+              radial-gradient(circle at bottom right, rgba(0,0,0,0.25), transparent 55%);
+  pointer-events: none;
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.auth-field {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-field label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.auth-input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.auth-button-primary {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 0;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #007bff, #00b4ff);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-button-primary:disabled {
+  background-color: #b5c7e3;
+}
+
+.auth-error {
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.auth-toggle {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.auth-link-button {
+  border: none;
+  background: none;
+  padding: 0;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-demo {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #666;
+  text-align: center;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  .app-root {
+    padding: 16px 8px;
+  }
+
+  .app-main {
+    padding: 16px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar input,
+  .toolbar select,
+  .toolbar button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 20px;
+  }
+
+  .auth-title {
+    font-size: 22px;
+  }
+}
