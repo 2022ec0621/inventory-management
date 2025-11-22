@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import api from "./api";
 import ProductTable from "./components/ProductTable";
 import HistorySidebar from "./components/HistorySidebar";
 import Login from "./components/Login";
@@ -48,7 +48,7 @@ function App() {
       const parsedUser = JSON.parse(savedUser);
       setToken(savedToken);
       setUser(parsedUser);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${savedToken}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${savedToken}`;
     }
   }, []);
 
@@ -80,7 +80,7 @@ const fetchProducts = async () => {
     if (search) params.search = search;
     if (category && category !== "All") params.category = category;
 
-    const res = await axios.get("/api/products", { params });
+    const res = await api.get("/api/products", { params });
 
     let list = [];
     let total = 0;
@@ -124,7 +124,7 @@ const fetchProducts = async () => {
   const handleLoginSuccess = ({ token, username, role }) => {
     setToken(token);
     setUser({ username, role });
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify({ username, role }));
   };
@@ -133,7 +133,7 @@ const fetchProducts = async () => {
     setUser(null);
     setToken(null);
     setProducts([]);
-    delete axios.defaults.headers.common["Authorization"];
+    delete api.defaults.headers.common["Authorization"];
     localStorage.removeItem("token");
     localStorage.removeItem("user");
   };
@@ -176,7 +176,7 @@ const fetchProducts = async () => {
         user: user.username,
         remark: "Updated from UI",
       };
-      await axios.put(`/api/products/${editingId}`, payload);
+      await api.put(`/api/products/${editingId}`, payload);
       await fetchProducts();
       setEditingId(null);
       setEditForm({});
@@ -198,7 +198,7 @@ const fetchProducts = async () => {
       return;
     }
     try {
-      await axios.delete(`/api/products/${id}`);
+      await api.delete(`/api/products/${id}`);
       await fetchProducts();
     } catch (err) {
       console.error("Delete error:", err);
@@ -209,7 +209,7 @@ const fetchProducts = async () => {
   // HISTORY
   const handleShowHistory = async (product) => {
     try {
-      const res = await axios.get(`/api/products/${product.id}/history`);
+      const res = await api.get(`/api/products/${product.id}/history`);
       setSelectedProduct(product);
       setHistory(res.data || []);
     } catch (err) {
@@ -236,7 +236,7 @@ const fetchProducts = async () => {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("/api/products/import", formData, {
+      const res = await api.post("/api/products/import", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert(
@@ -254,7 +254,7 @@ const fetchProducts = async () => {
   // EXPORT CSV (ADMIN)
   const handleExport = async () => {
     try {
-      const res = await axios.get("/api/products/export", {
+      const res = await api.get("/api/products/export", {
         responseType: "blob",
       });
 
@@ -317,7 +317,7 @@ const fetchProducts = async () => {
 
     try {
       const payload = { ...addForm };
-      await axios.post("/api/products", payload);
+      await api.post("/api/products", payload);
       await fetchProducts();
       handleCancelAdd();
     } catch (err) {

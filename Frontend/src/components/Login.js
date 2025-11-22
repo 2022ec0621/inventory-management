@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "./api"; 
 
 function Login({ onLogin }) {
   const [mode, setMode] = useState("login"); // "login" or "register"
@@ -17,7 +17,7 @@ function Login({ onLogin }) {
 
     try {
       const url = isLogin ? "/api/auth/login" : "/api/auth/register";
-      const res = await axios.post(url, { username, password });
+      const res = await api.post(url, { username, password });
       onLogin(res.data); // { token, username, role }
     } catch (err) {
       console.error("Auth error:", err);
